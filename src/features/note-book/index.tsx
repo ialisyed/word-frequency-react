@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { Button, TextField } from "@material-ui/core";
-import useFormInput from "../../hooks/form-input";
 import getWordSimilarity from "../../managers/Home";
+import { useFormInput } from "../../hooks";
 
 interface HomeProps {}
 
