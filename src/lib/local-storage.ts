@@ -2,6 +2,10 @@ import { RootState } from "../store";
 
 const STORE_KEY = "state";
 
+/**
+ * Save state in localstorage
+ * @param {RootState} state 
+ */
 export const saveState = (state: RootState) => {
   try {
     const serializedState = JSON.stringify(state);
@@ -11,6 +15,10 @@ export const saveState = (state: RootState) => {
   }
 };
 
+/**
+ * get State from local storage
+ * @returns {RootState} state
+ */
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem(STORE_KEY);

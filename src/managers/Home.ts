@@ -6,6 +6,12 @@ interface WordSimilarity {
   similarWords: Dictionary;
 }
 
+/**
+ * Returns an object for frequency of the requested word and it's similar words
+ * @param requestedWord string
+ * @param notebookEntry string
+ * @returns WordSimilarity
+ */
 function getWordSimilarity(
   requestedWord: string,
   notebookEntry: string

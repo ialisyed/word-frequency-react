@@ -35,10 +35,18 @@ const Home: FC<HomeProps> = () => {
     similarWords,
   } = useAppSelector(notebookSelector);
 
+  /**
+   * notebookEntry change handler
+   * @param e 
+   */
   const onNotebookEntryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setNotebookEntry(e.target.value));
   };
 
+  /**
+   * requested word change handler
+   * @param e 
+   */
   const onChangeRequestedWord = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     dispatch(setRequestedWord(val));
@@ -55,6 +63,10 @@ const Home: FC<HomeProps> = () => {
     }
   };
 
+  /**
+   * form submit handler
+   * @param e 
+   */
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     const { frequency, similarWords } = getWordSimilarity(

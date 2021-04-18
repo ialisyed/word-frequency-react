@@ -1,3 +1,9 @@
+/**
+ * Calculates Levenshtein's Distance bwetween 2 strings
+ * @param {string} a
+ * @param {string} b
+ * @returns {number} Levenshtein's Distance between 2 strings
+ */
 function levenshteinDistance(a: string, b: string) {
   if (a.length === 0) return b.length;
   if (b.length === 0) return a.length;
