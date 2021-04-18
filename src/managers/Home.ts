@@ -1,8 +1,9 @@
+import { Dictionary } from "../interface";
 import levenshteinDistance from "../lib/levenshtein-distance";
 
 interface WordSimilarity {
   frequency: number;
-  similarWords: string[];
+  similarWords: Dictionary;
 }
 
 function getWordSimilarity(
@@ -17,9 +18,13 @@ function getWordSimilarity(
       frequency += 1;
     }
   }
-  const similarWords = words.filter(
-    (word) => levenshteinDistance(word, requestedWord) === 1
-  );
+  const similarWords = words
+    .filter((word) => levenshteinDistance(word, requestedWord) === 1)
+    .reduce(
+      (output: Dictionary, word) =>
+        Object.assign(output, { [word]: output[word] ? output[word] + 1 : 1 }),
+      {}
+    );
   return { frequency, similarWords } as WordSimilarity;
 }
 

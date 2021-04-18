@@ -6,22 +6,24 @@ export interface NotebookError {
   error: boolean;
 }
 
+export interface NotebookSimilarWords {
+  [word: string]: number,
+}
+
 export interface NotebookState {
   notebookEntry: string;
   frequency: number;
   requestedWord: string;
-  similarWords: string[];
-  isLoading: boolean;
+  similarWords: NotebookSimilarWords;
   error: NotebookError;
 }
 
 export const initialState: NotebookState = {
   notebookEntry: "",
-  isLoading: false,
   error: { helperText: "", error: false },
   frequency: 0,
   requestedWord: "",
-  similarWords: [],
+  similarWords: {},
 };
 
 export const notebookSlice = createSlice({
@@ -37,8 +39,11 @@ export const notebookSlice = createSlice({
     setRequestedWord: (state, { payload }: PayloadAction<string>) => {
       state.requestedWord = payload;
     },
-    setSimilarWords: (state, { payload }: PayloadAction<string[]>) => {
+    setSimilarWords: (state, { payload }: PayloadAction<NotebookSimilarWords>) => {
       state.similarWords = payload;
+    },
+    setNotebookError: (state, { payload }: PayloadAction<NotebookError>) => {
+      state.error = payload;
     },
   },
 });
@@ -48,6 +53,7 @@ export const {
   setFrequency,
   setRequestedWord,
   setSimilarWords,
+  setNotebookError,
 } = notebookSlice.actions;
 
 export const notebookSelector = (state: RootState) => state.notebook;

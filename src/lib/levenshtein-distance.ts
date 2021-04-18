@@ -4,22 +4,23 @@ function levenshteinDistance(a: string, b: string) {
 
   // swap to save some memory O(min(a,b)) instead of O(a)
   if (a.length > b.length) {
-    var tmp = a;
+    let tmp = a;
     a = b;
     b = tmp;
   }
 
-  var row = [];
+  let row = [];
   // init the row
-  for (var i = 0; i <= a.length; i++) {
+  for (let i = 0; i <= a.length; i++) {
     row[i] = i;
   }
 
   // fill in the rest
-  for (var i = 1; i <= b.length; i++) {
-    var prev = i;
-    for (var j = 1; j <= a.length; j++) {
-      var val;
+  for (let i = 1; i <= b.length; i++) {
+    let prev = i;
+    for (let j = 1; j <= a.length; j++) {
+      let val;
+      // eslint-disable-next-line eqeqeq
       if (b.charAt(i - 1) == a.charAt(j - 1)) {
         val = row[j - 1]; // match
       } else {

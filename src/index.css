@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.cell:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+tr.heading th{
+    color: white;
+}
