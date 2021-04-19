@@ -18,6 +18,7 @@ import "./styles.css";
 import CustomTable from "../../components/table";
 import { STRINGS } from "../../localization";
 import { renderIf } from "../../util";
+import NotebookForm from "../../components/notebook-form";
 
 interface HomeProps {}
 
@@ -32,7 +33,9 @@ const Home: FC<HomeProps> = () => {
     similarWords,
   } = useAppSelector(notebookSelector);
 
-  const similarWordsKeys = useMemo(() => Object.keys(similarWords), [similarWords]);
+  const similarWordsKeys = useMemo(() => Object.keys(similarWords), [
+    similarWords,
+  ]);
 
   useEffect(() => {
     if (
@@ -50,7 +53,7 @@ const Home: FC<HomeProps> = () => {
    * notebookEntry change handler
    * @param e
    */
-  const onNotebookEntryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeNotebookEntry = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setNotebookEntry(e.target.value));
   };
 
@@ -90,7 +93,7 @@ const Home: FC<HomeProps> = () => {
 
   /**
    * reset notebook
-   * @param e 
+   * @param e
    */
   const onReset = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -100,50 +103,15 @@ const Home: FC<HomeProps> = () => {
   return (
     <div className="container d-flex flex-column align-items-center">
       <h1>{STRINGS.NOTEBOOK_HEADING}</h1>
-      <form
+      <NotebookForm
         onSubmit={onSubmit}
-        className="w-100 mt-4 d-flex flex-column align-items-center"
-      >
-        <TextField
-          multiline
-          id="notebook"
-          variant="outlined"
-          label="Notebook"
-          rows="8"
-          name="notebook"
-          className="w-75 m-4"
-          value={notebookEntry}
-          onChange={onNotebookEntryChange}
-        />
-
-        <TextField
-          id="word"
-          label="Frequency of the word"
-          variant="outlined"
-          onChange={onChangeRequestedWord}
-          value={requestedWord}
-          {...error}
-        />
-
-        <Button
-          variant="contained"
-          color="primary"
-          className="mt-4"
-          type="submit"
-          disabled={error.error || !notebookEntry || !requestedWord}
-        >
-          {STRINGS.NOTEBOOK_SUBMIT_BTN}
-        </Button>
-
-        <Button
-          variant="contained"
-          color="primary"
-          className="mt-4"
-          onClick={onReset}
-        >
-          {STRINGS.RESET}
-        </Button>
-      </form>
+        notebookEntry={notebookEntry}
+        onChangeNotebookEntry={onChangeNotebookEntry}
+        requestedWord={requestedWord}
+        onChangeRequestedWord={onChangeRequestedWord}
+        onReset={onReset}
+        error={error}
+      />
 
       <div
         ref={resultRef}
