@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useMemo, useRef } from "react";
-import { Button, TableCell, TableRow, TextField } from "@material-ui/core";
+import { TableCell, TableRow } from "@material-ui/core";
 import getWordSimilarity from "../../managers/Home";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import {
@@ -23,7 +23,12 @@ import NotebookForm from "../../components/notebook-form";
 interface HomeProps {}
 
 const Home: FC<HomeProps> = () => {
+  
+  /**
+   * frequency and similarWords parent div ref
+   */
   const resultRef = useRef<null | HTMLDivElement>(null);
+
   const dispatch = useAppDispatch();
   const {
     frequency,
@@ -33,10 +38,16 @@ const Home: FC<HomeProps> = () => {
     similarWords,
   } = useAppSelector(notebookSelector);
 
+  /**
+   * memoizing keys for similar words so that we don't have to calculate again and again
+   */
   const similarWordsKeys = useMemo(() => Object.keys(similarWords), [
     similarWords,
   ]);
 
+  /**
+   * Scroll into view after frequency or similarWords is updated
+   */
   useEffect(() => {
     if (
       (frequency !== undefined && frequency !== null) ||
