@@ -1,5 +1,5 @@
 # Word Frequency in a notebook entry - React
-Count frequency of a given word and it's similar words (with the Levenshtein distance not more than 1) in a notebook entry.
+Count frequency of a given word and find its similar words (with the Levenshtein distance not more than 1) in a notebook entry.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
