@@ -1,5 +1,5 @@
-# Word Frequency - React
-Count frequency of a given word and it's similar words with the Levenshtein distance not more than 1.
+# Word Frequency in a notebook entry - React
+Count frequency of a given word and it's similar words (with the Levenshtein distance not more than 1) in a notebook entry.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -25,12 +25,17 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technology
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-## Learn More
+The project is developed on `typescript` 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+It uses following latest technologies:
+- ### React Hooks
+- ### Redux toolkit: Data is handled with state. Storing the state in local storage to persist data
+- ### Material Ui - Core
+- ### Bootstrap 4
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## What more can be done?
+- ### Unit tests
+- ### Count frequency and similar words for multiple words given
+- ### CI/CD
